@@ -13,7 +13,7 @@
     <input type="text" id="employeeId" name="employeeId" [(ngModel)]="model.EmployeeId"><br>
   </tr>
     </table>  
-    <input type="submit" value="Add" > &nbsp;
+    <input type="submit" value="Add" (click)="addUsertoDB()" > &nbsp;
     <input type="reset" value="Reset" >
   </form>
 
