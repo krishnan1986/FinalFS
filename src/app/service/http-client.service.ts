@@ -25,7 +25,7 @@ export class HttpClientService {
     return this.http.get<task[]>(this.restcallurl);
   } */
 
-  addUser(User)
+  addUser(User: User)
   {
    console.log('inside add user button fucntion');
    console.log("task obj"+JSON.stringify(User));
@@ -39,7 +39,7 @@ export class HttpClientService {
   //  });
   //  console.log("map"+ convMap);
   
-    return this.http.post<User>("http://localhost:8111/addUser",User);
+    return this.http.post<User>("http://localhost:8112/addUser",User);
   }
 
   /* searchTask(task)
