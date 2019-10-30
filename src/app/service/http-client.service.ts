@@ -28,7 +28,7 @@ export class HttpClientService {
   addUser(User: User)
   {
    console.log('inside add user button fucntion');
-   console.log("task obj"+JSON.stringify(User));
+   console.log("user obj"+JSON.stringify(User));
    const convMap ={};
    var myJson=JSON.stringify(User);
    //this.sampleMap= JSON.parse(myJson);
@@ -42,11 +42,19 @@ export class HttpClientService {
     return this.http.post<User>("http://localhost:8112/addUser",User);
   }
 
-  /* searchTask(task)
+  searchUser(id: String)
   {
-    console.log('inside search task button fucntion');
-    return this.http.post<task[]>("http://localhost:8111/searchTask",task);
+    console.log('inside search user button fucntion'+ id);
+    return this.http.get("http://localhost:8112/searchUser"+"/"+id);
   }
+
+  updateFirstName(newUser: User)
+  {
+    console.log("updating firstname");
+    return this.http.put("http://localhost:8112/UpdateUser",newUser);
+
+  }
+  /* 
 
   endTask(taskName:string)
   {

@@ -20,31 +20,41 @@
   <hr>
   <div>
 
-    <label>Search users</label> <br>
-    <input type="text" value="Search..."> 
-    <button style="margin-left: 1%">Search</button>
+    <label >Search users</label> <br>
+    <input type="text" id="searchTerm" #searchTerm value="Search..."> 
+    <button style="margin-left: 1%" (click)="searchUser(searchTerm.value)">Search</button>
 
     <label style="margin-left: 1%">Sort Using</label> 
     <button value="firstName" style="margin-left: 1%">First Name</button> &nbsp;
     <button value="lastName"> Last Name</button>  &nbsp;
     <button value="id"> ID</button>
 
-    <div *ngFor="let user of users">
+     <hr>
+     
+    <div *ngFor="let user of Users">
       <table>
         <tr>
-      <input type="text" [(ngModel)]="user.firstName" > 
-    <button > Edit</button>
+        <label>Firstname :</label>
+      <input  type="text" [(ngModel)]="user.firstName" [readonly]="isEditable" > 
+    <button (click)="makeEditable(user)"> Edit</button>
     </tr>
     <tr>
-
+        <label>Lastname :</label>
       <input type="text" [(ngModel)]="user.lastName">
       <button> Delete</button>
     </tr>
     <tr>
-
-        <input type="text" [(ngModel)]="user.EmployeeId">
+        <label>Employee id :</label>
+        <input type="text" [(ngModel)]="user.employeeID">
       </tr>
+
+      <tr>
+          <label>user id :</label>
+          <input type="text" [(ngModel)]="user.id">
+        </tr>
       </table>
+      <hr>
     </div>
+   
   </div>
 
