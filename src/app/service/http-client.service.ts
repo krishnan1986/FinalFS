@@ -54,6 +54,12 @@ export class HttpClientService {
     return this.http.put("http://localhost:8112/UpdateUser",newUser);
 
   }
+
+  deleteUser(user)
+  {
+    console.log("deleting user"+ user.id)
+    return this.http.delete("http://localhost:8112/deleteUser"+"/"+user.id);
+  }
   /* 
 
   endTask(taskName:string)

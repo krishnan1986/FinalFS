@@ -25,9 +25,9 @@
     <button style="margin-left: 1%" (click)="searchUser(searchTerm.value)">Search</button>
 
     <label style="margin-left: 1%">Sort Using</label> 
-    <button value="firstName" style="margin-left: 1%">First Name</button> &nbsp;
-    <button value="lastName"> Last Name</button>  &nbsp;
-    <button value="id"> ID</button>
+    <button value="firstName" style="margin-left: 1%" (click)="sortByFname()">First Name</button> &nbsp;
+    <button value="lastName" (click)="sortByLname()"> Last Name</button>  &nbsp;
+    <button value="id" (click)="sortByUserId()"> ID</button>
 
      <hr>
      
@@ -41,7 +41,7 @@
     <tr>
         <label>Lastname :</label>
       <input type="text" [(ngModel)]="user.lastName">
-      <button> Delete</button>
+      <button (click)="deleteUser(user)"> Delete</button>
     </tr>
     <tr>
         <label>Employee id :</label>

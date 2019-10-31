@@ -63,4 +63,62 @@ export class AddUserComponent implements OnInit {
   this.Users.push(data);
   }
 
+  sortByFname()
+  {
+    console.log('sorting..')
+   var sortedArr= this.Users.sort((a,b) =>{
+      console.log('afname bfname->'+a.firstName+b.firstName)
+      if(a.firstName > b.firstName)
+      {
+          return 1;
+      }
+      if(a.firstName > b.firstName)
+      {
+        return -1;
+      }
+      return 0;
+    });
+    console.log('after sorting..'+ sortedArr[0].firstName +':::'+sortedArr[1].firstName)
+  }
+
+  sortByLname()
+  {
+    console.log('sorting..')
+    this.Users.sort((a,b) =>{
+      if(a.lastName > b.lastName)
+      {
+          return 1;
+      }
+      if(a.lastName > b.lastName)
+      {
+        return -1;
+      }
+      return 0;
+    });
+    console.log('after sorting..'+ this.Users)
+  }
+
+  sortByUserid()
+  {
+    this.Users.sort((a,b) =>{
+      if(a.id > b.id)
+      {
+          return 1;
+      }
+      if(a.id > b.id)
+      {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
+  deleteUser(user)
+  {
+    this.httpClientService.deleteUser(user).subscribe
+    (response => {
+      alert('deleted successfully');
+    });
+  }
+
 }
