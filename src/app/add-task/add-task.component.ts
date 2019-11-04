@@ -2,6 +2,7 @@ import { Component, OnInit , Input, EventEmitter, Output} from '@angular/core';
 import {task} from '../model/Task';
 import { HttpClientService } from '../service/http-client.service';
 import { Project } from '../model/project';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-task',
@@ -17,11 +18,16 @@ export class AddTaskComponent implements OnInit {
  @Input() isParentTask: boolean = false;
  @Output() getChange = new EventEmitter();
   postUrl:string ="http://localhost:8112/"
-
-  constructor( private httpClientService: HttpClientService) {
+  projects:any = ['a','b'];
+  constructor( private httpClientService: HttpClientService, public fb : FormBuilder) {
 
     
+    
   }
+  /*########### Form ###########*/
+  projectForm = this.fb.group({
+    projectName: ['']
+  })
 
   ngOnInit() {
     console.log('inside add task comp');

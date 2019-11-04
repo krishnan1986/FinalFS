@@ -1,40 +1,46 @@
 <div id="TaskBody" width="100%">
     <!-- <form #taskForm="ngForm" (ngSubmit)="addTaskService(taskForm)" > -->
-      <form>
+      <form [formGroup]="projectForm">
     <table>
         <tr>
             <label for="projectname">Project Name:</label> 
-             <input type="text" id="projectname" [(ngModel)]="projectModel.projectname" name="projectname"/> <br>
+             <!-- <input type="text" id="projectname" [(ngModel)]="projectModel.projectname" name="projectname"/> <br> -->
+             <select class="custom-select" formControlName="projectName">
+
+              <option value="" disabled>Choose the project to add task</option>
+              <option *ngFor= "let project of projects" [ngValue]="project">{{project}}</option>
+             </select>
+
             </tr>
       <tr>
         <label for="taskname">Task Name:</label> 
-         <input type="text" id="taskname" [(ngModel)]="model.taskname" name="taskname"/> <br>
+         <input type="text" id="taskname" [(ngModel)]="model.taskname" name="taskname" [ngModelOptions]="{standalone: true}"/> <br>
         </tr>
        
           <tr>
             <label>
-            <input #isParent type="checkbox" [(ngModel)]="isParentTask" name="isParentTask" (change)="checkParent(isParent.checked)"> ParentTask
+            <input #isParent type="checkbox" [(ngModel)]="isParentTask" name="isParentTask" (change)="checkParent(isParent.checked)" [ngModelOptions]="{standalone: true}" > ParentTask
             </label>
           </tr>
           <tr>
         <div>
             <label for="priority">Priority</label>
   
-            <input  id="priority" type="text" [(ngModel)]="model.Priority" name="priority" [readonly]="isParent.checked"/>
+            <input  id="priority" type="text" [(ngModel)]="model.Priority" name="priority" [readonly]="isParent.checked" [ngModelOptions]="{standalone: true}"/>
           <!-- </form> -->
             </div>
        </tr>
       <tr>
        <label for="parentTask">Parent Task id:</label>
-       <input  id="parentTask" type="text" [(ngModel)]="model.parentTask" name="parentTask" />
+       <input  id="parentTask" type="text" [(ngModel)]="model.parentTask" name="parentTask" [ngModelOptions]="{standalone: true}" />
       </tr>
       <tr>
           <label for="startDate">Start date:</label>
-           <input id="startDate" type="date" [(ngModel)]="model.startDate" name="startDate" [readonly]="isParent.checked"/>
+           <input id="startDate" type="date" [(ngModel)]="model.startDate" name="startDate" [readonly]="isParent.checked" [ngModelOptions]="{standalone: true}"/>
          </tr>
          <tr>
             <label for="endDate">End date:</label>
-            <input id="endDate" type="date" [(ngModel)]="model.endDate" name="endDate" [readonly]="isParent.checked">
+            <input id="endDate" type="date" [(ngModel)]="model.endDate" name="endDate" [readonly]="isParent.checked" [ngModelOptions]="{standalone: true}">
            </tr>
     </table>
     
