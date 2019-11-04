@@ -2,30 +2,39 @@
     <!-- <form #taskForm="ngForm" (ngSubmit)="addTaskService(taskForm)" > -->
       <form>
     <table>
+        <tr>
+            <label for="projectname">Project Name:</label> 
+             <input type="text" id="projectname" [(ngModel)]="projectModel.projectname" name="projectname"/> <br>
+            </tr>
       <tr>
         <label for="taskname">Task Name:</label> 
          <input type="text" id="taskname" [(ngModel)]="model.taskname" name="taskname"/> <br>
         </tr>
-       <tr>
        
+          <tr>
+            <label>
+            <input #isParent type="checkbox" [(ngModel)]="isParentTask" name="isParentTask" (change)="checkParent(isParent.checked)"> ParentTask
+            </label>
+          </tr>
+          <tr>
         <div>
             <label for="priority">Priority</label>
   
-            <input  id="priority" type="text" [(ngModel)]="model.Priority" name="priority"/>
+            <input  id="priority" type="text" [(ngModel)]="model.Priority" name="priority" [readonly]="isParent.checked"/>
           <!-- </form> -->
             </div>
        </tr>
       <tr>
        <label for="parentTask">Parent Task id:</label>
-       <input  id="parentTask" type="text" [(ngModel)]="model.parentTask" name="parentTask"/>
+       <input  id="parentTask" type="text" [(ngModel)]="model.parentTask" name="parentTask" />
       </tr>
       <tr>
           <label for="startDate">Start date:</label>
-           <input id="startDate" type="date" [(ngModel)]="model.startDate" name="startDate"/>
+           <input id="startDate" type="date" [(ngModel)]="model.startDate" name="startDate" [readonly]="isParent.checked"/>
          </tr>
          <tr>
             <label for="endDate">End date:</label>
-            <input id="endDate" type="date" [(ngModel)]="model.endDate" name="endDate">
+            <input id="endDate" type="date" [(ngModel)]="model.endDate" name="endDate" [readonly]="isParent.checked">
            </tr>
     </table>
     
