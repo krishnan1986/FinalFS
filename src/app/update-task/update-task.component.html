@@ -1,0 +1,38 @@
+<div id="TaskBody" width="100%">
+    <form id="addTaskForm" action="POST">
+    <table>
+      <tr>
+        <label>Task:</label> 
+         <input type="text" id="name"/><br>
+        </tr>
+       <tr>
+       
+        <div class="d-flex  my-4">
+            <span class="indigo-text mr-2 mt-1">Priority</span>
+        <span class="font-weight-bold indigo-text mr-2 mt-1">0</span>
+        <form class="range-field w-25">
+            <input type="range" class="custom-range" min="0" max="30" />
+          </form>
+            <span class="font-weight-bold indigo-text ml-2 mt-1">30</span>
+          </div>
+       </tr>
+      <tr>
+       <label>Parent Task:</label>
+       <input type="text"/>
+      </tr>
+      <tr>
+          <label>Start date:</label>
+           <input type="date">
+         </tr>
+         <tr>
+            <label>End date:</label>
+            <input type="date">
+           </tr>
+    </table>
+    
+    <button type="button" class="btn btn-primary mr-1">Update Task</button>
+  
+    <button type="reset" class="btn btn-primary">Cancel</button>
+  
+  </form>
+  </div>

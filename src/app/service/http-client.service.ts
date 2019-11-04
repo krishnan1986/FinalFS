@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from '../model/userModel';
 import { map } from 'rxjs/operators';
+import { task } from '../model/Task';
 
 
 @Injectable({
@@ -12,6 +13,7 @@ export class HttpClientService {
   
 
 //restcallurl ='http://localhost:8111/AddTask/';
+restcallurl ='http://localhost:8112/ViewTask/tasks';
   sampleMap = new Map<string, string>();
   
 
@@ -70,4 +72,42 @@ export class HttpClientService {
     console.log("ending task by calling rest call delete"+ taskName);
     return this.http.delete("http://localhost:8111/ViewTask/endTask",options);
   } */
+
+  addTask(task)
+  {
+   console.log('inside add task button fucntion');
+   console.log("task obj"+JSON.stringify(task));
+   const convMap ={};
+   var myJson=JSON.stringify(task);
+   //this.sampleMap= JSON.parse(myJson);
+   console.log("sampleMap"+this.sampleMap);
+  //  this.sampleMap.forEach((val: string ,key:string) => {
+  //     convMap[key]=val;
+     
+  //  });
+  //  console.log("map"+ convMap);
+  
+    return this.http.post<task>("http://localhost:8112/addTask",task);
+  }
+
+  searchTask(task)
+  {
+    console.log('inside search task button fucntion');
+    return this.http.post<task[]>("http://localhost:8112/searchTask",task);
+  }
+
+  getTaskList()
+  {
+    // perform DB fetch by invoking rest call
+    return this.http.get<task[]>(this.restcallurl);
+  }
+
+  endTask(taskName:string)
+  {
+    let httpParams= new HttpParams();
+    httpParams.set('taskName',taskName);
+    let options ={ params:httpParams}
+    console.log("ending task by calling rest call delete"+ taskName);
+    return this.http.delete("http://localhost:8112/ViewTask/endTask",options);
+  }
 }
