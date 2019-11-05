@@ -6,4 +6,5 @@ export class Project
     public StartDate: String;
     public endDate: String;
     public priority: number;
+    public managerName: String;
 }

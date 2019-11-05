@@ -1,3 +1,30 @@
-<p>
-  add-project works!
-</p>
+<table>
+ <tr>
+   <label for="projectname">Project Name:</label>
+   <input type="text" id="projectname" name="projectname" [(ngModel)]="project.projectname">
+
+
+ </tr>
+
+ <tr>
+  
+  <input #setDate type="checkbox" [(ngModel)]="project.setDate" name="setDates"  [ngModelOptions]="{standalone: true}" > Set Start and End date
+
+
+</tr>
+
+<tr>
+  <label for="priority">Priority:</label>
+  <input type="text" id="priority" name="priority" [(ngModel)]="project.priority">
+
+
+</tr>
+
+<tr>
+  <label for="manager">Manager Name:</label>
+  <input type="text" id="managerName" name="managerName" [(ngModel)]="project.managerName">
+
+
+</tr>
+
+</table>
