@@ -25,6 +25,14 @@
   <input type="text" id="managerName" name="managerName" [(ngModel)]="project.managerName">
 
 
-</tr>
+</tr> &nbsp;
 
+<tr><button id="searchManager">Search</button></tr>
+<br>
+<br>
+
+<tr><input type="submit" (click)="AddProjectToDB()" value="Add project" > &nbsp;
+
+<input type="reset" value="Reset">
+</tr>
 </table>
