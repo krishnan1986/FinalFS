@@ -1,5 +1,6 @@
 <table>
  <tr>
+   <h3>Add project section</h3> 
    <label for="projectname">Project Name:</label>
    <input type="text" id="projectname" name="projectname" [(ngModel)]="project.projectname">
 
@@ -39,7 +40,7 @@
 
 <hr>
 <div>
-
+   <h3> View Project section</h3>
   <label >Search projects</label> <br>
   <input type="text" id="searchTerm" #searchTerm value="Search..."> 
   <button style="margin-left: 1%" (click)="searchProject(searchTerm.value)">Search</button>
