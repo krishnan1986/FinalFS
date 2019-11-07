@@ -36,3 +36,53 @@
 <input type="reset" value="Reset">
 </tr>
 </table>
+
+<hr>
+<div>
+
+  <label >Search projects</label> <br>
+  <input type="text" id="searchTerm" #searchTerm value="Search..."> 
+  <button style="margin-left: 1%" (click)="searchProject(searchTerm.value)">Search</button>
+
+  <label style="margin-left: 1%">Sort Using</label> 
+  <button value="firstName" style="margin-left: 1%" (click)="sortByFname()">First Name</button> &nbsp;
+  <button value="lastName" (click)="sortByLname()"> Last Name</button>  &nbsp;
+  <button value="id" (click)="sortByUserId()"> ID</button>
+
+   <hr>
+   
+  <div *ngFor="let prjct of prjcts">
+    <table>
+      <tr>
+      <label>Project name :</label>
+    <input  type="text" [(ngModel)]="prjct.firstName" [readonly]="isEditable" > 
+  <button (click)="makeEditable(user)"> Edit</button>
+  </tr>
+  <tr>
+      <label>No of tasks :</label>
+    <input type="text" [(ngModel)]="prjct.lastName">
+    <button (click)="deleteUser(user)"> Delete</button>
+  </tr>
+  <tr>
+      <label>Completed:</label>
+      <input type="text" [(ngModel)]="prjct.employeeID">
+    </tr>
+
+    <tr>
+        <label>start date:</label>
+        <input type="text" [(ngModel)]="prjct.StartDate">
+      </tr>
+      <tr>
+        <label>End date:</label>
+        <input type="text" [(ngModel)]="prjct.endDate">
+      </tr>
+      <tr>
+        <label>priority:</label>
+        <input type="text" [(ngModel)]="prjct.priority">
+      </tr>
+    </table>
+    <hr>
+  </div>
+ 
+</div>
+
