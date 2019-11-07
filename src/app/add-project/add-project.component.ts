@@ -9,6 +9,7 @@ import { Project } from '../model/project';
 export class AddProjectComponent implements OnInit {
 
   project: Project = new Project();
+  isDatesSelected: boolean = false;
   constructor() { }
 
   ngOnInit() {

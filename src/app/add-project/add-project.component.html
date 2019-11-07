@@ -9,9 +9,18 @@
 
  <tr>
   
-  <input #setDate type="checkbox" [(ngModel)]="project.setDate" name="setDates"  [ngModelOptions]="{standalone: true}" > Set Start and End date
+  <input #setDate type="checkbox" [(ngModel)]="isDatesSelected" name="setDates"  [ngModelOptions]="{standalone: true}" > Set Start and End date
 
 
+</tr>
+
+<tr>
+   <label> Start date</label>
+   <input type="date" value="startDate" [disabled]="!(setDate.checked)">
+</tr>
+<tr>
+    <label> End date</label>
+  <input type="date" value="endDate" [disabled]="!(setDate.checked)">
 </tr>
 
 <tr>
