@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from '../model/userModel';
 import { map } from 'rxjs/operators';
 import { task } from '../model/Task';
+import { Project } from '../model/project';
 
 
 @Injectable({
@@ -88,6 +89,23 @@ restcallurl ='http://localhost:8112/ViewTask/tasks';
   //  console.log("map"+ convMap);
   
     return this.http.post<task>("http://localhost:8112/addTask",task);
+  }
+
+  addProject(project : Project)
+  {
+   console.log('inside add project button fucntion');
+   console.log("project obj"+JSON.stringify(project));
+   const convMap ={};
+   var myJson=JSON.stringify(project);
+   //this.sampleMap= JSON.parse(myJson);
+   console.log("sampleMap"+this.sampleMap);
+  //  this.sampleMap.forEach((val: string ,key:string) => {
+  //     convMap[key]=val;
+     
+  //  });
+  //  console.log("map"+ convMap);
+  
+    return this.http.post<Project>("http://localhost:8112/addProject",project);
   }
 
   searchTask(task)

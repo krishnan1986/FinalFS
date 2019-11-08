@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../model/project';
+import { HttpClientService } from '../service/http-client.service';
 
 @Component({
   selector: 'app-add-project',
@@ -10,9 +11,15 @@ export class AddProjectComponent implements OnInit {
 
   project: Project = new Project();
   isDatesSelected: boolean = false;
-  constructor() { }
+  constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
   }
 
+  AddProjectToDB(project: Project)
+  {
+    this.httpClientService.addProject(project).subscribe( data => {
+      alert("project created successfully.");
+    });;
+  }
 }

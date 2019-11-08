@@ -1,3 +1,4 @@
+<form>
 <table>
  <tr>
    <h3>Add project section</h3> 
@@ -16,11 +17,11 @@
 
 <tr>
    <label> Start date</label>
-   <input type="date" value="startDate" [disabled]="!(setDate.checked)">
+   <input type="date" value="startDate" [(ngModel)]="project.StartDate" [disabled]="!(setDate.checked)" [ngModelOptions]="{standalone: true}">
 </tr>
 <tr>
     <label> End date</label>
-  <input type="date" value="endDate" [disabled]="!(setDate.checked)">
+  <input type="date" value="endDate" [(ngModel)]="project.endDate" [disabled]="!(setDate.checked)" [ngModelOptions]="{standalone: true}">
 </tr>
 
 <tr>
@@ -41,13 +42,14 @@
 <br>
 <br>
 
-<tr><input type="submit" (click)="AddProjectToDB()" value="Add project" > &nbsp;
+<tr><input type="submit" (click)="AddProjectToDB(project)" value="Add project" > &nbsp;
 
 <input type="reset" value="Reset">
 </tr>
 </table>
-
+</form>
 <hr>
+
 <div>
    <h3> View Project section</h3>
   <label >Search projects</label> <br>
