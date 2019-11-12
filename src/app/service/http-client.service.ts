@@ -15,6 +15,7 @@ export class HttpClientService {
 
 //restcallurl ='http://localhost:8111/AddTask/';
 restcallurl ='http://localhost:8112/ViewTask/tasks';
+getProjects="http://localhost:8112/viewProjects";
   sampleMap = new Map<string, string>();
   
 
@@ -119,6 +120,11 @@ restcallurl ='http://localhost:8112/ViewTask/tasks';
     // perform DB fetch by invoking rest call
     return this.http.get<task[]>(this.restcallurl);
   }
+
+  getProjectList()
+  {
+    return this.http.get<Project>(this.getProjects);
+    }
 
   endTask(taskName:string)
   {

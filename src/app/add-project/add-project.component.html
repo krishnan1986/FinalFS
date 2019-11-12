@@ -67,7 +67,7 @@
     <table>
       <tr>
       <label>Project name :</label>
-    <input  type="text" [(ngModel)]="prjct.firstName" [readonly]="isEditable" > 
+    <input  type="text" [(ngModel)]="prjct.name" [readonly]="isEditable" > 
   <button (click)="makeEditable(user)"> Edit</button>
   </tr>
   <tr>
@@ -76,13 +76,13 @@
     <button (click)="deleteUser(user)"> Delete</button>
   </tr>
   <tr>
-      <label>Completed:</label>
-      <input type="text" [(ngModel)]="prjct.employeeID">
-    </tr>
+      <label>Completed: {{isCompletedCheck}}</label>
+     <!--  <input type="text" [(ngModel)]="prjct.isCompletedCheck" value="{{prjct.isCompletedCheck}}">
+     --></tr>
 
     <tr>
         <label>start date:</label>
-        <input type="text" [(ngModel)]="prjct.StartDate">
+        <input type="text" [(ngModel)]="prjct.startDate">
       </tr>
       <tr>
         <label>End date:</label>
