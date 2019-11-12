@@ -12,7 +12,8 @@ export class AddProjectComponent implements OnInit {
   project: Project = new Project();
   prjcts: Project[];
   isDatesSelected: boolean = false;
-  isCompletedCheck: string = "NO";
+  isCompleted: boolean = false;
+  taskNumber: number =1;
   constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
@@ -23,28 +24,40 @@ export class AddProjectComponent implements OnInit {
     );
   }
 
+  
+
   handle(response)
   {
   this.prjcts=response;
   let i: number= 0;
   let currdate: Date = new Date();
   console.log("proejcts"+ JSON.stringify(response))
- /*  for(i=0;this.prjcts.length;i++){
+  var year= currdate.getFullYear();
+  var month= currdate.getMonth();
+  var day= currdate.getDay();
+  var checked=[];
 
-     if(currdate.valueOf >Date.parse(this.prjcts[i].endDate).valueOf)
-     {
-       this.isCompletedCheck = true;
-     }
-  } */
+  var dateFormat= new Date(year,month,day);
+ 
+
   this.prjcts.forEach(function(value){
-    console.log(value.endDate);
+    
+
+    console.log("end date :"+value.endDate+"current date"+currdate);
     /* let obj= JSON.parse(v);
      */
-    if(currdate.valueOf >Date.parse(value.endDate).valueOf)
+    var endDate= new Date(value.endDate);
+    if(dateFormat>endDate)
      {
-       this.isCompletedCheck = "YES";
+       console.log("updating check to yes")
+
+       //this.handleCheck(true);
+    //  this.isCompleted = !this.isCompleted
      }
   });
+ 
+   
+  
   }
 
   AddProjectToDB(project: Project)
@@ -53,4 +66,6 @@ export class AddProjectComponent implements OnInit {
       alert("project created successfully.");
     });;
   }
+
+  
 }

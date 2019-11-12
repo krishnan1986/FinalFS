@@ -71,12 +71,12 @@
   <button (click)="makeEditable(user)"> Edit</button>
   </tr>
   <tr>
-      <label>No of tasks :</label>
-    <input type="text" [(ngModel)]="prjct.lastName">
+      <label>No of tasks : {{taskNumber}}</label>
+    <!-- <input type="text" [(ngModel)]="prjct.lastName"> -->
     <button (click)="deleteUser(user)"> Delete</button>
   </tr>
   <tr>
-      <label>Completed: {{isCompletedCheck}}</label>
+      <label>Completed: {{isCompleted}}</label>
      <!--  <input type="text" [(ngModel)]="prjct.isCompletedCheck" value="{{prjct.isCompletedCheck}}">
      --></tr>
 
