@@ -9,6 +9,7 @@ export class task
     public startDate: Date;
     public endDate: Date;
     public selectedProjectName: string;
+    public taskOwner: string;
 
 
 

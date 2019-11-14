@@ -37,8 +37,15 @@
                                       <option value="" disabled>Choose the project to add task</option>
                                       <option  *ngFor="let prjct of prjcts">{{prjct.name}}</option>
                                      </select>
+                              </tr>   
+                              <tr>
+                                     <select class="custom-select" formControlName="users">
+
+                                        <option value="" disabled>Choose one of the user below as task owner</option>
+                                        <option  *ngFor="let user of users">{{user.name}}</option>
+                                       </select>
                            <!--  <input  type="text" [(ngModel)]="prjct.name" [(ngModel)]="model.taskname" name="taskname" [ngModelOptions]="{standalone: true}" > 
-       -->                   <br> <button (click)="selectProject()"> Add to task</button>
+       -->                   <br> <button (click)="selectUsers()"> Add to task</button>
                           </tr>
                           </table>
                           </div>

@@ -16,6 +16,7 @@ export class HttpClientService {
 //restcallurl ='http://localhost:8111/AddTask/';
 restcallurl ='http://localhost:8112/ViewTask/tasks';
 getProjects="http://localhost:8112/viewProjects";
+getUsers="http://localhost:8112/viewUsers";
   sampleMap = new Map<string, string>();
   
 
@@ -124,6 +125,11 @@ getProjects="http://localhost:8112/viewProjects";
   getProjectList()
   {
     return this.http.get<Project>(this.getProjects);
+    }
+
+    getUserList()
+  {
+    return this.http.get<User>(this.getUsers);
     }
 
   endTask(taskName:string)

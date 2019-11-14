@@ -3,6 +3,7 @@ import {task} from '../model/Task';
 import { HttpClientService } from '../service/http-client.service';
 import { Project } from '../model/project';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { User } from '../model/userModel';
 
 @Component({
   selector: 'app-add-task',
@@ -16,12 +17,14 @@ export class AddTaskComponent implements OnInit {
  model:task= new task();
  projectModel: Project = new Project();
  prjcts: Project[];
+ users: User[];
  projectForm: FormGroup;
  @Input() isParentTask: boolean = false;
  @Output() getChange = new EventEmitter();
   postUrl:string ="http://localhost:8112/"
   projects:any = ['a','b'];
   selectedProject: string;
+  selectedUser: string;
   constructor( private httpClientService: HttpClientService, public fb : FormBuilder) {
 
     
@@ -34,16 +37,26 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit() {
     this.projectForm = new FormGroup({
-      projects: new FormControl('')
+      projects: new FormControl(''),
+      users: new FormControl('')
     });
 
     this.projectForm.get('projects').valueChanges
     .subscribe(data => {console.log('selected'+data)
+
     this.selectedProject= data;
     console.log('component var'+this.selectedProject)
   
   }// console.log(this.prjcts.filter(d => { return d.projectname == data}))
-      )
+      );
+
+      this.projectForm.get('users').valueChanges.subscribe(data => {console.log('selected user'+data)
+  
+      this.selectedUser= data;
+      console.log('component var'+this.selectedUser)
+    
+    }// console.log(this.prjcts.filter(d => { return d.projectname == data}))
+        );
     console.log('inside add task comp');
     console.log('loading projects available');
     this.httpClientService.getProjectList().subscribe
@@ -51,11 +64,20 @@ export class AddTaskComponent implements OnInit {
       response => this.handle(response),
 
     );
+    this.httpClientService.getUserList().subscribe
+    (
+      response => this.handleUser(response),
+
+    );
   }
 
   handle(response)
   {
   this.prjcts=response;
+  }
+  handleUser(response)
+  {
+  this.users=response;
   }
 
   checkParent(isParentTask)
@@ -68,6 +90,12 @@ export class AddTaskComponent implements OnInit {
   {
       this.model.selectedProjectName=this.selectedProject;
       console.log('seetting model value'+ this.model.selectedProjectName)
+  }
+
+  selectUsers()
+  {
+      this.model.taskOwner=this.selectedUser;
+      console.log('seetting model value'+ this.model.taskOwner)
   }
 
   
