@@ -8,6 +8,7 @@ export class task
     public priority: number;
     public startDate: Date;
     public endDate: Date;
+    public selectedProjectName: string;
 
 
 
