@@ -42,11 +42,15 @@
                                      <select class="custom-select" formControlName="users">
 
                                         <option value="" disabled>Choose one of the user below as task owner</option>
-                                        <option  *ngFor="let user of users">{{user.name}}</option>
+                                        <option  *ngFor="let user of users">{{(user.firstName) +" "+ (user.lastName)}}</option>
                                        </select>
                            <!--  <input  type="text" [(ngModel)]="prjct.name" [(ngModel)]="model.taskname" name="taskname" [ngModelOptions]="{standalone: true}" > 
-       -->                   <br> <button (click)="selectUsers()"> Add to task</button>
-                          </tr>
+       -->                   <br> <button (click)="selectProject()"> Add to task</button>
+                                   </tr>
+                                   <tr>
+                                      <button (click)="selectUsers()"> Mark Task owner</button>
+                         
+                                   </tr>
                           </table>
                           </div>
                     </div>

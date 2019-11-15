@@ -95,7 +95,7 @@ export class AddTaskComponent implements OnInit {
   selectUsers()
   {
       this.model.taskOwner=this.selectedUser;
-      console.log('seetting model value'+ this.model.taskOwner)
+      console.log('setting task owner value'+ this.model.taskOwner)
   }
 
   
