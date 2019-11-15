@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClientService } from '../service/http-client.service';
 import { task } from '../model/Task';
 import { parentTask } from '../model/parentTask';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Project } from '../model/project';
+import { User } from '../model/userModel';
 
 @Component({
   selector: 'app-view-task',
@@ -12,9 +15,14 @@ export class ViewTaskComponent implements OnInit {
 
   isSearched: Boolean =false;
    tasks:task[];
-   model:task = new task();
+   
+   prjcts: Project[];
+ users: User[];
+   model:task = new task() ;
+   viewTaskForm: FormGroup;
    parentTaskfromDB: parentTask = new parentTask();
    editRowId: any;
+   selectedProject: string;
 
 
   constructor(private httpClientService: HttpClientService) {
@@ -23,15 +31,64 @@ export class ViewTaskComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.httpClientService.getTaskList().subscribe
+    this.viewTaskForm = new FormGroup({
+      projects: new FormControl(''),
+      users: new FormControl('')
+    });
+
+    this.viewTaskForm.get('projects').valueChanges
+    .subscribe(data => {console.log('selected'+data)
+
+    this.selectedProject= data;
+    console.log('component var'+this.selectedProject)
+  
+  }// console.log(this.prjcts.filter(d => { return d.projectname == data}))
+      );
+
+      this.viewTaskForm.get('users').valueChanges.subscribe(data => {console.log('selected user'+data)
+  
+      //this.selectedUser= data;
+      //console.log('component var'+this.selectedUser)
+    
+    }// console.log(this.prjcts.filter(d => { return d.projectname == data}))
+        );
+
+        this.httpClientService.getProjectList().subscribe
     (
-      response => {this.handle(response),
-        console.log(response)
-      }
+      response => this.handleProjects(response),
 
     );
-  }
+    /* this.httpClientService.getUserList().subscribe
+    (
+      response => this.handleUser(response),
 
+    ); */
+
+    
+  }
+ searchTaskforProject()
+ {
+  this.httpClientService.getTaskListForProject(this.selectedProject).subscribe
+  (
+    response => {this.handle(response),
+      console.log(response)
+    }
+
+  );
+ }
+  handleProjects(response)
+  {
+  this.prjcts=response;
+  }
+ /*  handleUser(response)
+  {
+  this.users=response;
+  } */
+  selectProject()
+  {
+      this.model.selectedProjectName=this.selectedProject;
+      console.log('setting model value'+ this.model.selectedProjectName)
+  }
   toggle(id){
     this.editRowId = id;
   }

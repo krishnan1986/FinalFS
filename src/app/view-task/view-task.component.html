@@ -1,8 +1,8 @@
 <div id="viewTaskBody">
-    <form #viewForm="ngForm" (ngSubmit)="searchTaskService(viewForm)" >
+    <form [formGroup]="viewTaskForm" >
    <table>
  
-   <tr>
+   <!-- <tr>
    
      <div class="view-task">
    <label for="tasknameSearch">Task name:</label>
@@ -17,9 +17,7 @@
    <div class="view-task-1">
        <label for="priosearch">Priority</label>
        <input  id="priosearch" type="text" [(ngModel)]="model.Priority" name="priosearch"/>
- <!--      
-           <label>Priority To:</label>
-           <input type="text" size="1"> -->
+ 
           
                <label for="sdate">Start date:</label>
                <input type="date" id="sdate" style="width:155px" [(ngModel)]="model.startDate" name="sdate">
@@ -29,12 +27,71 @@
        </div>
      </tr>
  
- 
+  -->
+  <tr>
+      <label for="projectname">Project Name:</label> 
+       <!-- <input type="text" id="projectname" [(ngModel)]="projectModel.projectname" name="projectname"/> <br> -->
+       <!-- <select class="custom-select" formControlName="projectName">
+
+        <option value="" disabled>Choose the project to add task</option>
+        <option *ngFor= "let project of projects" [ngValue]="project">{{project}}</option>
+       </select> -->
+        
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Search</button>
+      
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Details</h4>
+              </div>
+              <div class="modal-body">
+                  <label>Project List :</label>
+                  <div>
+                      <table>
+                        <tr>
+                            <select class="custom-select" formControlName="projects">
+
+                                <option value="" disabled>Choose the project for which tasks has to be displayed</option>
+                                <option  *ngFor="let prjct of prjcts">{{prjct.name}}</option>
+                               </select>
+                        </tr>   
+                        <tr>
+                               <!-- <select class="custom-select" formControlName="users">
+
+                                  <option value="" disabled>Choose one of the user below as task owner</option>
+                                  <option  *ngFor="let user of users">{{(user.firstName) +" "+ (user.lastName)}}</option>
+                                 </select> -->
+                     <!--  <input  type="text" [(ngModel)]="prjct.name" [(ngModel)]="model.taskname" name="taskname" [ngModelOptions]="{standalone: true}" > 
+ -->                   <br> <button (click)="selectProject()"> Add to task</button>
+                             </tr>
+                            <!--  <tr>
+                                <button (click)="selectUsers()"> Mark Task owner</button>
+                   
+                             </tr> -->
+                    </table>
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      
+      </tr>
      
    </table>
  
    
-  <input type="submit" value="Search" class="btn btn-info">
+  <input type="submit" value="View Tasks"  (click)='searchTaskforProject()' class="btn btn-info">
  
  
  

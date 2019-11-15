@@ -82,7 +82,7 @@ export class AddTaskComponent implements OnInit {
 
   checkParent(isParentTask)
   {
-    alert(isParentTask);
+    alert("Adding task as parent task , so priority , start date and end date is not editable ");
     this.getChange.emit(this.isParentTask);
   }
 

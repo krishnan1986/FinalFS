@@ -122,6 +122,12 @@ getUsers="http://localhost:8112/viewUsers";
     return this.http.get<task[]>(this.restcallurl);
   }
 
+  getTaskListForProject(projectName: string)
+  {
+    // perform DB fetch by invoking rest call
+    return this.http.get<task[]>("http://localhost:8112/ViewTask"+"/"+projectName);
+  }
+
   getProjectList()
   {
     return this.http.get<Project>(this.getProjects);
