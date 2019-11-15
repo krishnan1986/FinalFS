@@ -60,7 +60,7 @@
                 </td>
                 <td *ngIf="basictask.rowId == editRowId">
                  
-                   <input type="text" [(ngModel)]="basictask.parentTask">
+                   <input type="text" [(ngModel)]="basictask.parentTask.name">
                  </td>
                <td *ngIf="basictask.rowId !== editRowId" (click)="toggle(basictask.rowId)">{{basictask.parentTask}}</td>
                <td *ngIf="basictask.rowId == editRowId">

@@ -1,10 +1,12 @@
+import { parentTask } from './parentTask';
+
 export class task
 {
     // constructor( ,,, ){
 
     // }
     public taskname:string;
-    public parentTask: number;
+    public parentTask: parentTask;
     public priority: number;
     public startDate: Date;
     public endDate: Date;

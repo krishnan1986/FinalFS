@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClientService } from '../service/http-client.service';
 import { task } from '../model/Task';
+import { parentTask } from '../model/parentTask';
 
 @Component({
   selector: 'app-view-task',
@@ -12,6 +13,7 @@ export class ViewTaskComponent implements OnInit {
   isSearched: Boolean =false;
    tasks:task[];
    model:task = new task();
+   parentTaskfromDB: parentTask = new parentTask();
    editRowId: any;
 
 
@@ -23,7 +25,9 @@ export class ViewTaskComponent implements OnInit {
   ngOnInit() {
     this.httpClientService.getTaskList().subscribe
     (
-      response => this.handle(response),
+      response => {this.handle(response),
+        console.log(response)
+      }
 
     );
   }
@@ -34,6 +38,11 @@ export class ViewTaskComponent implements OnInit {
   handle(response)
   {
   this.tasks=response;
+  this.tasks.forEach(function(eachTask)
+  {
+     console.log("each task"+JSON.stringify(eachTask));
+  });
+  console.log("tasks"+JSON.stringify(this.tasks))
   }
 
   searchTaskService(form):void  {
