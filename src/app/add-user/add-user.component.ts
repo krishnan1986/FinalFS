@@ -35,6 +35,14 @@ export class AddUserComponent implements OnInit {
    
   }
   ngOnInit() {
+    this.httpClientService.getUserList().
+    subscribe(
+      response => this.handleUsers(response))
+  }
+
+  handleUsers(data)
+  {
+      this.Users=data;
   }
 
   addUsertoDB():void  {
