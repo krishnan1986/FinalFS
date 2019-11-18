@@ -144,6 +144,6 @@ getUsers="http://localhost:8112/viewUsers";
     httpParams.set('taskName',taskName);
     let options ={ params:httpParams}
     console.log("ending task by calling rest call delete"+ taskName);
-    return this.http.delete("http://localhost:8112/ViewTask/endTask",options);
+    return this.http.delete("http://localhost:8112/endTask"+"/"+taskName,options);
   }
 }

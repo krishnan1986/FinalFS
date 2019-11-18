@@ -25,6 +25,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   
+  
 
   handle(response)
   {
@@ -62,9 +63,18 @@ export class AddProjectComponent implements OnInit {
 
   AddProjectToDB(project: Project)
   {
+
+    if((this.project.StartDate < this.project.endDate ) && (this.project.projectname!=null)){
     this.httpClientService.addProject(project).subscribe( data => {
       alert("project created successfully.");
     });;
+    }
+    else if(this.project.StartDate > this.project.endDate){
+        alert('start date should be less than end date');
+    }
+    else {
+      alert('project name should not be blank')
+    }
   }
 
   
