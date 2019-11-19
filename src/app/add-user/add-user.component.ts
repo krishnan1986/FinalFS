@@ -37,20 +37,34 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
     this.httpClientService.getUserList().
     subscribe(
+      
       response => this.handleUsers(response))
   }
 
   handleUsers(data)
   {
+    console.log(JSON.stringify(data));
       this.Users=data;
   }
 
   addUsertoDB():void  {
+
+    if((this.model.firstName==null || this.model.lastName== null || this.model.EmployeeId == null )
+    
+    ||
+    (this.model.firstName=="" || this.model.lastName== "" || this.model.EmployeeId == "" )
+    
+    )
+    {
+      alert("values cannot be blank");
+    }
+    else{
     console.log("adding user");
     this.httpClientService.addUser(this.model)
     .subscribe( data => {
       alert("user added successfully.");
     });
+  }
   }
 
   searchUser(searchInput): User{
