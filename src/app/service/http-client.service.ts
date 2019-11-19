@@ -4,6 +4,7 @@ import { User } from '../model/userModel';
 import { map } from 'rxjs/operators';
 import { task } from '../model/Task';
 import { Project } from '../model/project';
+import {HttpHeaders} from '@angular/common/http'
 
 
 @Injectable({
@@ -18,6 +19,7 @@ restcallurl ='http://localhost:8112/ViewTask/tasks';
 getProjects="http://localhost:8112/viewProjects";
 getUsers="http://localhost:8112/viewUsers";
   sampleMap = new Map<string, string>();
+  
   
 
     angular: any;
@@ -64,6 +66,17 @@ getUsers="http://localhost:8112/viewUsers";
   {
     console.log("deleting user"+ user.id)
     return this.http.delete("http://localhost:8112/deleteUser"+"/"+user.id);
+  }
+  
+
+  updateUser(user)
+  {
+   let  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let options = {headers : headers};
+  
+    console.log("updating user "+JSON.stringify(user))
+    
+    return this.http.put("http://localhost:8112/UpdateUser",user,options);
   }
   /* 
 

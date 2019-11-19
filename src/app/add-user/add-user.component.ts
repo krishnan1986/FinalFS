@@ -26,11 +26,14 @@ export class AddUserComponent implements OnInit {
    
     console.log("user"+JSON.stringify(user));
     //this.isEditable=false;
-    this.httpClientService.updateFirstName(user).subscribe(response =>
+    /* this.httpClientService.updateFirstName(user).subscribe(response =>
       {
       alert("name updated successfully.");
       });
+ */
 
+   this.model = user;
+   document.getElementById("toggleButton").setAttribute("value","Update");
    
    
   }
@@ -49,21 +52,34 @@ export class AddUserComponent implements OnInit {
 
   addUsertoDB():void  {
 
-    if((this.model.firstName==null || this.model.lastName== null || this.model.EmployeeId == null )
+    if((this.model.firstName==null || this.model.lastName== null || this.model.employeeID == null )
     
     ||
-    (this.model.firstName=="" || this.model.lastName== "" || this.model.EmployeeId == "" )
+    (this.model.firstName=="" || this.model.lastName== "" || this.model.employeeID == "" )
     
     )
     {
       alert("values cannot be blank");
     }
     else{
+      if(document.getElementById("toggleButton").getAttribute("value")== "Add"){
+      
     console.log("adding user");
     this.httpClientService.addUser(this.model)
     .subscribe( data => {
       alert("user added successfully.");
     });
+    }
+    else {
+
+      // update
+
+      this.httpClientService.updateUser(this.model)
+      .subscribe(data => {
+        alert('user updated successfully');
+      })
+
+    }
   }
   }
 

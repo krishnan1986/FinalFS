@@ -10,10 +10,10 @@
   </tr>
   <tr>
     <label for="employeeId" style="text-align:left">Employee ID: </label>
-    <input type="text" id="employeeId" name="employeeId" [(ngModel)]="model.EmployeeId"><br>
+    <input type="text" id="employeeId" name="employeeId" [(ngModel)]="model.employeeID"><br>
   </tr>
     </table>  
-    <input type="submit" value="Add" (click)="addUsertoDB()" > &nbsp;
+    <input #addButton type="submit" value="Add" id="toggleButton" (click)="addUsertoDB()" > &nbsp;
     <input type="reset" value="Reset" >
   </form>
 
