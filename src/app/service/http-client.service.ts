@@ -55,6 +55,12 @@ getUsers="http://localhost:8112/viewUsers";
     return this.http.get("http://localhost:8112/searchUser"+"/"+id);
   }
 
+  searchProject(id: String)
+  {
+    console.log('inside search project button fucntion'+ id);
+    return this.http.get("http://localhost:8112/searchProject"+"/"+id);
+  }
+
   updateFirstName(newUser: User)
   {
     console.log("updating firstname");

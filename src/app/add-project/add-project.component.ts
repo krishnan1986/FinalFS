@@ -16,6 +16,8 @@ export class AddProjectComponent implements OnInit {
   isCompleted: boolean = false;
   taskNumber: number =1;
   isSorted: boolean =false;
+  isSearched: boolean;
+  result: Project;
   constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
@@ -145,5 +147,24 @@ export class AddProjectComponent implements OnInit {
        // this.sortedProjects=sortArr;
         alert('sorted');
   }
+
+  searchProject(searchInput): Project{
+    this.isSorted=false;
+       console.log("executing search..."+ searchInput);
+   
+       this.httpClientService.searchProject(searchInput).subscribe( data => {
+         alert("project searched successfully.");
+         this.handleSearch(data);
+         this.isSearched=true;
+       });
+     
+       
+       return this.result ;
+     }
+     handleSearch(data)
+     {
+       console.log("user got is "+JSON.stringify(data))
+     this.prjcts.push(data);
+     }
   
 }
