@@ -31,30 +31,55 @@
 
      <hr>
      
-    <div *ngFor="let user of Users">
-      <table>
+   
+      <table border="1">
+        <thead></thead>
         <tr>
-        <label>Firstname :</label>
-      <input  type="text" [(ngModel)]="user.firstName" [readonly]="isEditable" > 
-    <button (click)="makeEditable(user)"> Edit</button>
-    </tr>
-    <tr>
-        <label>Lastname :</label>
-      <input type="text" [(ngModel)]="user.lastName">
-      <button (click)="deleteUser(user)"> Delete</button>
-    </tr>
-    <tr>
-        <label>Employee id :</label>
-        <input type="text" [(ngModel)]="user.employeeID">
-      </tr>
+          <th>
+        <label>Firstname </label>
+      </th>
+    <th>
+        <label>Lastname </label>
+    </th>
+    <th>
+        <label>Employee id </label>
+        </th>
 
-      <tr>
-          <label>user id :</label>
-          <input type="text" [(ngModel)]="user.id">
+      <th>
+          <label>user id </label>
+          </th>
         </tr>
+        <tbody>
+            <tr *ngFor="let user of Users">
+              <td>
+                  <input  type="text" [(ngModel)]="user.firstName" [readonly]="isEditable" > 
+    
+              </td>
+              <td>
+                  <input type="text" [(ngModel)]="user.lastName">
+     
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.employeeID">
+     
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="user.id">
+      
+                </td>
+                <td>
+                    <button (click)="deleteUser(user)"> Delete</button>
+    
+                </td>
+                <td>
+                    <button (click)="makeEditable(user)"> Edit</button>
+    
+                  </td>
+              </tr>
+        </tbody>
       </table>
       <hr>
-    </div>
+
    
   </div>
 
