@@ -63,38 +63,71 @@
 
    <hr>
    
-  <div *ngFor="let prjct of prjcts">
-    <table>
+  
+    <table border="1"> 
+      <thead></thead>
       <tr>
-      <label>Project name :</label>
-    <input  type="text" [(ngModel)]="prjct.name" [readonly]="isEditable" > 
-  <button (click)="makeEditable(user)"> Edit</button>
-  </tr>
-  <tr>
-      <label>No of tasks : {{taskNumber}}</label>
+        <th>
+      <label>Project name </label>
+    </th>
+   
+  <th>
+      <label>No of tasks  </label>
     <!-- <input type="text" [(ngModel)]="prjct.lastName"> -->
-    <button (click)="deleteUser(user)"> Delete</button>
-  </tr>
-  <tr>
-      <label>Completed: {{isCompleted}}</label>
+    </th>
+  <th>
+      <label>Completed </label>
      <!--  <input type="text" [(ngModel)]="prjct.isCompletedCheck" value="{{prjct.isCompletedCheck}}">
-     --></tr>
+     --></th>
 
-    <tr>
+    <th>
         <label>start date:</label>
-        <input type="text" [(ngModel)]="prjct.startDate">
-      </tr>
-      <tr>
+        </th>
+      <th>
         <label>End date:</label>
-        <input type="text" [(ngModel)]="prjct.endDate">
-      </tr>
-      <tr>
+         </th>
+      <th>
         <label>priority:</label>
+         </th>
+         </tr>
+      <tbody>
+          <tr *ngFor="let prjct of prjcts">
+      <td>
+        <input  type="text" [(ngModel)]="prjct.name" [readonly]="isEditable" > 
+        
+      </td>
+      <td>
+          {{taskNumber}}
+      </td>
+      <td>
+          {{isCompleted}}
+      </td>
+      
+      <td>
+        <input type="text" [(ngModel)]="prjct.startDate">
+     
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="prjct.endDate">
+     
+      </td>
+      <td>
         <input type="text" [(ngModel)]="prjct.priority">
+    
+      </td>
+      <td>
+          <button (click)="makeEditable(user)"> Edit</button>
+        
+      </td>
+      <td>
+          <button (click)="deleteUser(user)"> Delete</button>
+    
+        </td>
       </tr>
+    </tbody>
     </table>
     <hr>
-  </div>
+  <!-- </div> -->
  
 </div>
 
