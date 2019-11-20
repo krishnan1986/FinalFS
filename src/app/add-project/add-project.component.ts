@@ -76,6 +76,17 @@ export class AddProjectComponent implements OnInit {
       alert('project name should not be blank')
     }
   }
+  //SORT
+  sortBySDate()
+  {
+    this.httpClientService.sortByStartDate().
+    subscribe(response=>
+      {
+        //this.prjcts.push(response);
+        console.log("resp"+JSON.stringify(response))
+        alert('sorted');
+      });
+  }
 
   
 }

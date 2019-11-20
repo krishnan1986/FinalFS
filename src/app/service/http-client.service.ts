@@ -159,4 +159,9 @@ getUsers="http://localhost:8112/viewUsers";
     console.log("ending task by calling rest call delete"+ taskName);
     return this.http.delete("http://localhost:8112/endTask"+"/"+taskName,options);
   }
+
+  sortByStartDate()
+  {
+    return this.http.get('http://localhost:8112/sortBySDate');
+  }
 }
