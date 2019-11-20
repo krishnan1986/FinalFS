@@ -29,7 +29,7 @@ export class AddProjectComponent implements OnInit {
 
     );
     // get task count for all projects
-   /*  console.log("init proejcts"+JSON.stringify(this.initResProjects))
+    console.log("init proejcts"+JSON.stringify(this.prjcts))
     this.initResProjects.forEach(function(value){
       console.log("getting task count for "+value.projectname);
     this.httpClientService.getTaskCountByPname(value.projectname).
@@ -38,7 +38,7 @@ export class AddProjectComponent implements OnInit {
          console.log(JSON.stringify(resp))
        }
       )
-      }); */
+      });
   }
 
   
@@ -105,7 +105,7 @@ export class AddProjectComponent implements OnInit {
         alert('start date should be less than end date');
     }
     else {
-      alert('project name should not be blank')
+      alert('project name or dates should not be blank')
     }
   }
   //SORT
