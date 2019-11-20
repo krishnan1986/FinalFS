@@ -52,12 +52,16 @@ export class AddProjectComponent implements OnInit {
     /* let obj= JSON.parse(v);
      */
     var endDate= new Date(value.endDate);
-    if(dateFormat>endDate)
+    console.log("day"+currdate.getDate() +"enddate day"+endDate.getDate())
+    if(currdate.getDate() >endDate.getDate())
      {
        console.log("updating check to yes")
-
+       value.completed=true;
        //this.handleCheck(true);
-    //  this.isCompleted = !this.isCompleted
+     // this.isCompleted = !this.isCompleted
+     }
+     else{
+       value.completed=false;
      }
   });
  

@@ -7,4 +7,6 @@ export class Project
     public endDate: string;
     public priority: number;
     public managerName: String;
+
+    public completed:boolean;
 }
