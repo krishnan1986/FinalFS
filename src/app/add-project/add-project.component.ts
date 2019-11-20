@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../model/project';
 import { HttpClientService } from '../service/http-client.service';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-project',
@@ -20,6 +21,7 @@ export class AddProjectComponent implements OnInit {
   isSorted: boolean =false;
   isSearched: boolean;
   result: Project;
+  datePipe: DatePipe;
   constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class AddProjectComponent implements OnInit {
   var year= currdate.getFullYear();
   var month= currdate.getMonth();
   var day= currdate.getDay();
+  
   var checked=[];
 
   var dateFormat= new Date(year,month,day);
@@ -80,6 +83,10 @@ export class AddProjectComponent implements OnInit {
        value.completed=false;
      }
 
+     // format date
+     //value.StartDate=this.datePipe.transform(value.StartDate,"yyyy-MM-dd");
+     //value.endDate=this.datePipe.transform(value.endDate,"yyyy-MM-dd");
+      
      /* console.log("getting task count for "+value.projectname);
     http.get('http://localhost:8112/getTaskCountByName'+"/"+value.projectname).
     subscribe(resp =>
@@ -87,6 +94,8 @@ export class AddProjectComponent implements OnInit {
          console.log(JSON.stringify(resp))
        }
       ) */
+
+      console.log("vlaue is "+JSON.stringify(value))
   });
  
    
@@ -95,7 +104,8 @@ export class AddProjectComponent implements OnInit {
 
   AddProjectToDB(project: Project)
   {
-
+    if(document.getElementById("toggleButton").getAttribute("value")== "Add project"){
+      {
     if((this.project.StartDate < this.project.endDate ) && (this.project.projectname!=null)){
     this.httpClientService.addProject(project).subscribe( data => {
       alert("project created successfully.");
@@ -107,6 +117,39 @@ export class AddProjectComponent implements OnInit {
     else {
       alert('project name or dates should not be blank')
     }
+  }
+  }
+  else{
+    console.log("updating")
+    this.httpClientService.updateProject(this.project).subscribe(data =>
+      
+      {
+        console.log("updated")
+      })
+   /*  this.httpClientService.updateProject(this.project)
+    .subscribe(data => {
+      alert('project updated successfully');
+    }) */
+
+  }
+ }
+  // edit 
+
+  makeEditable(project)
+  {
+   
+    console.log("project"+JSON.stringify(project));
+    //this.isEditable=false;
+    /* this.httpClientService.updateFirstName(user).subscribe(response =>
+      {
+      alert("name updated successfully.");
+      });
+ */
+
+   this.project = project;
+   document.getElementById("toggleButton").setAttribute("value","Update");
+   
+   
   }
   //SORT
   sortBySDate()

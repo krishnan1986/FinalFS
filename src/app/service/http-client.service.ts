@@ -84,6 +84,18 @@ getUsers="http://localhost:8112/viewUsers";
     
     return this.http.put("http://localhost:8112/UpdateUser",user,options);
   }
+
+  updateProject(project)
+  {
+    let  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let options = {headers : headers};
+  
+    console.log("updating user "+JSON.stringify(project))
+    
+    return this.http.put("http://localhost:8112/UpdateUser",project,options);
+  
+
+  }
   /* 
 
   endTask(taskName:string)
