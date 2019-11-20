@@ -27,12 +27,12 @@
     <label style="margin-left: 1%">Sort Using</label> 
     <button value="firstName" style="margin-left: 1%" (click)="sortByFname()">First Name</button> &nbsp;
     <button value="lastName" (click)="sortByLname()"> Last Name</button>  &nbsp;
-    <button value="id" (click)="sortByUserId()"> ID</button>
+    <button value="id" (click)="sortByUserid()"> ID</button>
 
      <hr>
      
    
-      <table border="1">
+      <table border="1" *ngIf="!isSorted">
         <thead></thead>
         <tr>
           <th>
@@ -49,7 +49,7 @@
           <label>user id </label>
           </th>
         </tr>
-        <tbody>
+        <tbody >
             <tr *ngFor="let user of Users">
               <td>
                   <input  type="text" [(ngModel)]="user.firstName" [readonly]="isEditable" > 
@@ -79,7 +79,53 @@
         </tbody>
       </table>
       <hr>
+      
+      <table border="1" id="sortedTable" *ngIf="isSorted">
+        <thead></thead>
+        <tr>
+          <th>
+        <label>Firstname </label>
+      </th>
+    <th>
+        <label>Lastname </label>
+    </th>
+    <th>
+        <label>Employee id </label>
+        </th>
 
+      <th>
+          <label>user id </label>
+          </th>
+        </tr>
+        <tbody >
+          <tr *ngFor="let user of sortedUsers">
+            <td>
+                <input  type="text" [(ngModel)]="user.firstName" [readonly]="isEditable" > 
+  
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="user.lastName">
+   
+              </td>
+              <td>
+                  <input type="text" [(ngModel)]="user.employeeID">
+   
+              </td>
+              <td>
+                  <input type="text" [(ngModel)]="user.id">
+    
+              </td>
+              <td>
+                  <button (click)="deleteUser(user)"> Delete</button>
+  
+              </td>
+              <td>
+                  <button (click)="makeEditable(user)"> Edit</button>
+  
+                </td>
+            </tr>
+      </tbody>
+      </table>
    
   </div>
 

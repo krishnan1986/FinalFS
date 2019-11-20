@@ -67,7 +67,7 @@
    <hr>
    
   
-    <table border="1"> 
+    <table border="1" *ngIf="!isSorted"> 
       <thead></thead>
       <tr>
         <th>
@@ -93,7 +93,7 @@
         <label>priority</label>
          </th>
          </tr>
-      <tbody *ngIf="!isSorted">
+      <tbody >
           <tr *ngFor="let prjct of prjcts">
       <td>
         <input  type="text" [(ngModel)]="prjct.name" [readonly]="isEditable" > 
@@ -132,9 +132,33 @@
     </table>
 
 
-    <table id="sortedTable">
-     
-      <tbody *ngIf="isSorted">
+    <table id="sortedTable" *ngIf="isSorted">
+      <thead></thead>
+      <tr>
+        <th>
+      <label>Project name </label>
+    </th>
+   
+  <th>
+      <label>No of tasks  </label>
+    <!-- <input type="text" [(ngModel)]="prjct.lastName"> -->
+    </th>
+  <th>
+      <label>Completed </label>
+     <!--  <input type="text" [(ngModel)]="prjct.isCompletedCheck" value="{{prjct.isCompletedCheck}}">
+     --></th>
+
+    <th>
+        <label>start date</label>
+        </th>
+      <th>
+        <label>End date</label>
+         </th>
+      <th>
+        <label>priority</label>
+         </th>
+         </tr>
+      <tbody>
 
      
 
@@ -172,7 +196,7 @@
             </td>
           </tr>
       
-
+   </tbody>
     </table>
     <hr>
   <!-- </div> -->

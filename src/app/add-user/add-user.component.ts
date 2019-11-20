@@ -13,6 +13,8 @@ export class AddUserComponent implements OnInit {
   result: User = new User();
   Users: User[]= [];
   searchInput: String;
+  sortedUsers: User[]= new Array<User>();
+  isSorted: boolean =false;
  // private isEditable: boolean=true;
    
   
@@ -103,7 +105,7 @@ export class AddUserComponent implements OnInit {
 
   sortByFname()
   {
-    console.log('sorting..')
+   /*  console.log('sorting..')
    var sortedArr= this.Users.sort((a,b) =>{
       console.log('afname bfname->'+a.firstName+b.firstName)
       if(a.firstName > b.firstName)
@@ -117,12 +119,24 @@ export class AddUserComponent implements OnInit {
       return 0;
     });
     console.log('after sorting..'+ sortedArr[0].firstName +':::'+sortedArr[1].firstName)
-  }
+
+
+  */
+ 
+      this.httpClientService.sortByFname().subscribe(response =>{
+        this.sortedUsers = JSON.parse(JSON.stringify(response))
+
+       // console.log("sorted obejcts"+JSON.stringify(this.sortedProjects))
+        alert('sorted');
+        this.isSorted =true;
+        }
+        )
+}
 
   sortByLname()
   {
     console.log('sorting..')
-    this.Users.sort((a,b) =>{
+    /* this.Users.sort((a,b) =>{
       if(a.lastName > b.lastName)
       {
           return 1;
@@ -133,12 +147,20 @@ export class AddUserComponent implements OnInit {
       }
       return 0;
     });
-    console.log('after sorting..'+ this.Users)
-  }
+    console.log('after sorting..'+ this.Users)*/
+    this.httpClientService.sortByLname().subscribe(response =>{
+      this.sortedUsers = JSON.parse(JSON.stringify(response))
+
+     // console.log("sorted obejcts"+JSON.stringify(this.sortedProjects))
+      alert('sorted');
+      this.isSorted =true;
+      }
+      )
+  } 
 
   sortByUserid()
   {
-    this.Users.sort((a,b) =>{
+   /*  this.Users.sort((a,b) =>{
       if(a.id > b.id)
       {
           return 1;
@@ -148,7 +170,16 @@ export class AddUserComponent implements OnInit {
         return -1;
       }
       return 0;
-    });
+    }); */
+
+    this.httpClientService.sortByUserId().subscribe(response =>{
+      this.sortedUsers = JSON.parse(JSON.stringify(response))
+
+     // console.log("sorted obejcts"+JSON.stringify(this.sortedProjects))
+      alert('sorted');
+      this.isSorted =true;
+      }
+      );
   }
 
   deleteUser(user)

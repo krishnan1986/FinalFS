@@ -173,5 +173,19 @@ getUsers="http://localhost:8112/viewUsers";
   {
     return this.http.get<Project[]>('http://localhost:8112/sortByPrio');
   }
+
+  sortByFname()
+  {
+    return this.http.get<User[]>('http://localhost:8112/sortByFname');
+  }
+  
+  sortByLname()
+  {
+    return this.http.get<User[]>('http://localhost:8112/sortByLname');
+  }
+  sortByUserId()
+  {
+    return this.http.get<User[]>('http://localhost:8112/sortByUserId');
+  }
   
 }
