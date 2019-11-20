@@ -194,4 +194,8 @@ getUsers="http://localhost:8112/viewUsers";
     return this.http.get<User[]>('http://localhost:8112/sortByUserId');
   }
   
+  getTaskCountByPname(name:string)
+  {
+    return this.http.get('http://localhost:8112/getTaskCountByName'+"/"+name);
+  }
 }

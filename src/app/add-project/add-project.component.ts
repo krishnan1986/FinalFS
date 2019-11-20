@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../model/project';
 import { HttpClientService } from '../service/http-client.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-project',
@@ -12,6 +13,7 @@ export class AddProjectComponent implements OnInit {
   project: Project = new Project();
   prjcts: Project[] = new Array<Project>();
   sortedProjects: Project[]=new Array<Project>();
+  initResProjects: Project[]=new Array<Project>();
   isDatesSelected: boolean = false;
   isCompleted: boolean = false;
   taskNumber: number =1;
@@ -26,6 +28,17 @@ export class AddProjectComponent implements OnInit {
       response => this.handle(response),
 
     );
+    // get task count for all projects
+   /*  console.log("init proejcts"+JSON.stringify(this.initResProjects))
+    this.initResProjects.forEach(function(value){
+      console.log("getting task count for "+value.projectname);
+    this.httpClientService.getTaskCountByPname(value.projectname).
+    subscribe(resp =>
+       {
+         console.log(JSON.stringify(resp))
+       }
+      )
+      }); */
   }
 
   
@@ -34,6 +47,7 @@ export class AddProjectComponent implements OnInit {
   handle(response)
   {
   this.prjcts=response;
+  this.initResProjects=response;
   let i: number= 0;
   let currdate: Date = new Date();
   console.log("proejcts"+ JSON.stringify(response))
@@ -46,12 +60,14 @@ export class AddProjectComponent implements OnInit {
  
 
   this.prjcts.forEach(function(value){
-    
+    let httpClientService: HttpClientService;
+    let http: HttpClient;
 
     console.log("end date :"+value.endDate+"current date"+currdate);
     /* let obj= JSON.parse(v);
      */
     var endDate= new Date(value.endDate);
+   
     console.log("day"+currdate.getDate() +"enddate day"+endDate.getDate())
     if(currdate.getDate() >endDate.getDate())
      {
@@ -63,6 +79,14 @@ export class AddProjectComponent implements OnInit {
      else{
        value.completed=false;
      }
+
+     /* console.log("getting task count for "+value.projectname);
+    http.get('http://localhost:8112/getTaskCountByName'+"/"+value.projectname).
+    subscribe(resp =>
+       {
+         console.log(JSON.stringify(resp))
+       }
+      ) */
   });
  
    

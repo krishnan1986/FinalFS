@@ -9,4 +9,5 @@ export class Project
     public managerName: String;
 
     public completed:boolean;
+    public noOfTasks: number;
 }
