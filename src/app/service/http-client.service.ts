@@ -164,4 +164,14 @@ getUsers="http://localhost:8112/viewUsers";
   {
     return this.http.get('http://localhost:8112/sortBySDate');
   }
+
+  sortByEndDate()
+  {
+    return this.http.get('http://localhost:8112/sortByEDate');
+  }
+  sortByPrio()
+  {
+    return this.http.get('http://localhost:8112/sortByPrio');
+  }
+  
 }

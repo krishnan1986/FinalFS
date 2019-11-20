@@ -88,5 +88,32 @@ export class AddProjectComponent implements OnInit {
       });
   }
 
+  sortByEDate()
+  {
+    this.httpClientService.sortByEndDate().
+    subscribe(response=>
+      {
+        //this.prjcts.push(response);
+        console.log("resp"+JSON.stringify(response))
+        alert('sorted');
+      });
+  }
+
+  sortByPrio()
+  {
+    this.httpClientService.sortByPrio().
+    subscribe(response=>
+      {
+        //this.prjcts.push(response);
+        console.log("resp"+JSON.stringify(response));
+        let P= new Project();
+        
+        this.prjcts.push(JSON.parse(JSON.stringify(response)));
+
+        console.log("prjects array"+JSON.stringify(this.prjcts))
+        alert('sorted');
+      });
+  }
+
   
 }
