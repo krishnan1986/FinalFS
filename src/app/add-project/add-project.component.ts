@@ -120,12 +120,12 @@ export class AddProjectComponent implements OnInit {
   }
   }
   else{
-    console.log("updating")
-    this.httpClientService.updateProject(this.project).subscribe(data =>
+    console.log("updating..")
+    /* this.httpClientService.updateProject(this.project).subscribe(data =>
       
       {
         console.log("updated")
-      })
+      }) */
    /*  this.httpClientService.updateProject(this.project)
     .subscribe(data => {
       alert('project updated successfully');
