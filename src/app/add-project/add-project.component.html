@@ -3,7 +3,7 @@
  <tr>
    <h3>Add project section</h3> 
    <label for="projectname">Project Name:</label>
-   <input type="text" id="projectname" name="projectname" [(ngModel)]="project.name">
+   <input type="text" id="projectname" name="projectname" [(ngModel)]="project.projectname">
 
 
  </tr>
@@ -17,7 +17,7 @@
 
 <tr>
    <label> Start date</label>
-   <input type="date" value="startDate" [(ngModel)]="project.startDate" [disabled]="!(setDate.checked)" [ngModelOptions]="{standalone: true}">
+   <input type="date" value="startDate" [(ngModel)]="project.StartDate" [disabled]="!(setDate.checked)" [ngModelOptions]="{standalone: true}">
 </tr>
 <tr>
     <label> End date</label>
@@ -33,7 +33,7 @@
 
 <tr>
   <label for="manager">Manager Name:</label>
-  <input type="text" id="managerName" name="managerName" [(ngModel)]="project.manager">
+  <input type="text" id="managerName" name="managerName" [(ngModel)]="project.managerName">
 
 
 </tr> &nbsp;
@@ -124,7 +124,7 @@
         
       </td>
       <td>
-          <button (click)="deleteUser(prjct)"> Delete</button>
+          <button (click)="deleteProject(prjct)"> Delete</button>
     
         </td>
       </tr>

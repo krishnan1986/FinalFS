@@ -138,7 +138,7 @@ export class AddProjectComponent implements OnInit {
   makeEditable(project)
   {
    
-    console.log("project"+JSON.stringify(project));
+  // console.log("project"+JSON.stringify(project));
     //this.isEditable=false;
     /* this.httpClientService.updateFirstName(user).subscribe(response =>
       {
@@ -146,10 +146,22 @@ export class AddProjectComponent implements OnInit {
       });
  */
 
-   this.project = project;
-   document.getElementById("toggleButton").setAttribute("value","Update");
+  // this.project = project;
+  console.log("editing disabled")
+   //document.getElementById("toggleButton").setAttribute("value","Update");
    
    
+  }
+
+  deleteProject(project)
+  {
+    //console.log("prject"+JSON.stringify(project))
+    /*   this.httpClientService.deleteProject(project.pid).subscribe
+      (response => {
+        alert('deleted successfully');
+      }); */
+      console.log("deleting disabled as of now")
+    
   }
   //SORT
   sortBySDate()

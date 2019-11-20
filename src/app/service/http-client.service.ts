@@ -73,6 +73,12 @@ getUsers="http://localhost:8112/viewUsers";
     console.log("deleting user"+ user.id)
     return this.http.delete("http://localhost:8112/deleteUser"+"/"+user.id);
   }
+
+  deleteProject(pid:number)
+  {
+    console.log("deleting project"+ pid)
+    return this.http.delete("http://localhost:8112/deleteProject"+"/"+pid);
+  }
   
 
   updateUser(user)
