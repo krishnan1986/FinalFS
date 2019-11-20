@@ -10,10 +10,12 @@ import { HttpClientService } from '../service/http-client.service';
 export class AddProjectComponent implements OnInit {
 
   project: Project = new Project();
-  prjcts: Project[];
+  prjcts: Project[] = new Array<Project>();
+  sortedProjects: Project[]=new Array<Project>();
   isDatesSelected: boolean = false;
   isCompleted: boolean = false;
   taskNumber: number =1;
+  isSorted: boolean =false;
   constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
@@ -83,8 +85,11 @@ export class AddProjectComponent implements OnInit {
     subscribe(response=>
       {
         //this.prjcts.push(response);
-        console.log("resp"+JSON.stringify(response))
+       // console.log("resp"+JSON.stringify(response))
+       this.sortedProjects = JSON.parse(JSON.stringify(response))
+
         alert('sorted');
+        this.isSorted =true;
       });
   }
 
@@ -94,8 +99,12 @@ export class AddProjectComponent implements OnInit {
     subscribe(response=>
       {
         //this.prjcts.push(response);
-        console.log("resp"+JSON.stringify(response))
+       // console.log("resp"+JSON.stringify(response))
+        this.sortedProjects = JSON.parse(JSON.stringify(response))
+
+       // console.log("sorted obejcts"+JSON.stringify(this.sortedProjects))
         alert('sorted');
+        this.isSorted =true;
       });
   }
 
@@ -104,16 +113,37 @@ export class AddProjectComponent implements OnInit {
     this.httpClientService.sortByPrio().
     subscribe(response=>
       {
-        //this.prjcts.push(response);
-        console.log("resp"+JSON.stringify(response));
-        let P= new Project();
-        
-        this.prjcts.push(JSON.parse(JSON.stringify(response)));
+        this.sortedProjects = JSON.parse(JSON.stringify(response))
 
-        console.log("prjects array"+JSON.stringify(this.prjcts))
+       // console.log("sorted obejcts"+JSON.stringify(this.sortedProjects))
         alert('sorted');
+        this.isSorted =true;
       });
+
+   /* this.prjcts.sort((l,r) :number =>
+   {
+     if(l.priority > r.priority)
+     {
+       return 1;
+     }
+     if(l.priority<l.priority) return -1;
+     return 0;
+   }); */
+   console.log("sorted arr"+JSON.stringify(this.sortedProjects))
+      this.isSorted = true;
   }
 
+
+  handleSort(response: string)
+  {
+    console.log("resp sorted"+JSON.stringify(response));
+        let P= new Project();
+        
+        this.sortedProjects.push(JSON.parse(JSON.stringify(response)));
+
+        console.log("prjects array"+JSON.stringify(this.sortedProjects))
+       // this.sortedProjects=sortArr;
+        alert('sorted');
+  }
   
 }
