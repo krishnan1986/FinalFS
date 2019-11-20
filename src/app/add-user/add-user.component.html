@@ -35,7 +35,7 @@
      <hr>
      
    
-      <table border="1" *ngIf="!isSorted">
+      <table border="1" *ngIf="!isSorted || isSearched">
         <thead></thead>
         <tr>
           <th>
@@ -52,7 +52,7 @@
           <label>user id </label>
           </th>
         </tr>
-        <tbody >
+        <tbody>
             <tr *ngFor="let user of Users">
               <td>
                   <input  type="text" [(ngModel)]="user.firstName" [readonly]="isEditable" > 
@@ -80,10 +80,12 @@
                   </td>
               </tr>
         </tbody>
+
+        
       </table>
       <hr>
       
-      <table border="1" id="sortedTable" *ngIf="isSorted">
+      <table border="1" id="sortedTable" *ngIf="isSorted && !isSearched">
         <thead></thead>
         <tr>
           <th>

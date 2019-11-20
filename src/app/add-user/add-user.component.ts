@@ -15,6 +15,7 @@ export class AddUserComponent implements OnInit {
   searchInput: String;
   sortedUsers: User[]= new Array<User>();
   isSorted: boolean =false;
+  isSearched : boolean =false;
  // private isEditable: boolean=true;
    
   
@@ -40,6 +41,7 @@ export class AddUserComponent implements OnInit {
    
   }
   ngOnInit() {
+    
     this.httpClientService.getUserList().
     subscribe(
       
@@ -86,12 +88,13 @@ export class AddUserComponent implements OnInit {
   }
 
   searchUser(searchInput): User{
-
+ this.isSorted=false;
     console.log("executing search..."+ searchInput);
 
     this.httpClientService.searchUser(searchInput).subscribe( data => {
       alert("user searched successfully.");
       this.handle(data);
+      this.isSearched=true;
     });
   
     
